@@ -1,7 +1,6 @@
 import {
   FunctionComponent,
   useState,
-  useEffect,
   ChangeEventHandler,
   MouseEventHandler,
 } from "react";

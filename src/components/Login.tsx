@@ -103,7 +103,7 @@ const Login: FunctionComponent<Props> = observer(() => {
       <Button type="button" onClick={handleCancel} data-cy="cancel">
         Cancel
       </Button>
-      <Button type="submit" data-cy="login">
+      <Button type="submit" data-cy={!register ? "login" : "register"}>
         {!register ? "Login" : "Register"}
       </Button>
 
