@@ -46,6 +46,13 @@ export const RootStore = types
     clearSelectedLocation() {
       self.selectedLocation = undefined;
     },
+    deleteLocalLocation(location: LocationModel) {
+      if (location === self.selectedLocation) {
+        self.selectedLocation = undefined;
+      }
+      const _detached = detach(location);
+      destroy(_detached);
+    },
   }))
   .actions((self) => ({
     fetchLocationsData: flow(function* fetchLocationsData() {
@@ -84,8 +91,7 @@ export const RootStore = types
       if (typeof result === "object" && "error" in result && result.error) {
         return result;
       } else {
-        detach(location);
-        destroy(location);
+        self.deleteLocalLocation(location);
       }
     }),
   }))

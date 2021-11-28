@@ -51,16 +51,6 @@ export const Location = types
     setLongitude(lng: number) {
       self.longitude = lng;
     },
-    // setValue<
-    //   K extends keyof SnapshotIn<typeof self>,
-    //   T extends SnapshotIn<typeof self>
-    // >(key: K, value: T | null) {
-    //   if (!value) {
-    //     self[key] = "" as never;
-    //     return;
-    //   }
-    //   self[key] = value as any;
-    // },
     remove() {
       getRoot<RootStoreModel>(self).deleteLocation(self);
     },

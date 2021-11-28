@@ -1,7 +1,7 @@
 import { FunctionComponent, useState } from "react";
 import { observer } from "mobx-react-lite";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { useStore } from "../store";
 
 interface Props {}
@@ -67,6 +67,7 @@ const MapViewer: FunctionComponent<Props> = observer((props) => {
                   alt="image_url"
                 />
               )}
+              <Button onClick={() => selectedLocation.remove()}>delete</Button>
             </Box>
           </Popup>
         ) : null}
