@@ -7,17 +7,17 @@ import {
 } from "mobx-state-tree";
 import { RootStoreModel } from "./RootStore";
 
-export interface LocationStore extends Instance<typeof Location> {}
+export interface LocationModel extends Instance<typeof Location> {}
 export interface LocationSnapshotIn extends SnapshotIn<typeof Location> {}
 export interface LocationSnapshotOut extends SnapshotOut<typeof Location> {}
 
 export const Location = types
   .model("Location", {
-    id: types.identifier,
+    id: types.identifierNumber,
     latitude: types.number,
     longitude: types.number,
     name: types.string,
-    imageUrl: types.string,
+    imageurl: types.maybeNull(types.string),
   })
   .views((self) => ({
     getCoordinates() {
@@ -26,7 +26,7 @@ export const Location = types
     toShow() {
       return {
         name: self.name,
-        imageUrl: self.imageUrl,
+        imageurl: self.imageurl,
         latitude: self.latitude,
         longitude: self.longitude,
       };
@@ -36,8 +36,8 @@ export const Location = types
     setName(name: string) {
       self.name = name;
     },
-    setImageUrl(url: string) {
-      self.imageUrl = url;
+    setimageurl(url: string) {
+      self.imageurl = url;
     },
     setLatitude(lat: number) {
       self.latitude = lat;

@@ -33,7 +33,7 @@ const AddNewLocationButton: FunctionComponent<Props> = observer(
       latitude: lat,
       longitude: lng,
       name: "",
-      imageUrl: "",
+      imageurl: "",
     });
 
     const handleAddNewLocation: MouseEventHandler = (event) => {
@@ -44,7 +44,7 @@ const AddNewLocationButton: FunctionComponent<Props> = observer(
           latitude: lat,
           longitude: lng,
           name: "",
-          imageUrl: "",
+          imageurl: "",
         };
       });
     };
@@ -103,10 +103,10 @@ const AddNewLocationButton: FunctionComponent<Props> = observer(
               />
               <TextField
                 id="outlined-basic"
-                label="imageUrl"
-                name="imageUrl"
+                label="imageurl"
+                name="imageurl"
                 variant="outlined"
-                value={newLocation.imageUrl}
+                value={newLocation.imageurl}
                 required
                 onChange={handleChange}
               />

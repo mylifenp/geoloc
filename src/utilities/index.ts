@@ -1,4 +1,5 @@
 import { BACKEND_URL } from "../config";
+import Cookies from "js-cookie";
 
 export function ApiCalls(endpoint: string, body = {}) {
   const url = `${BACKEND_URL}${endpoint}`;
@@ -7,7 +8,7 @@ export function ApiCalls(endpoint: string, body = {}) {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",
-        // Authorization: `Bearer ${cookie}`,
+        token: Cookies.get("token") || "",
       }),
       // signal: controller.signal,
     };
@@ -25,9 +26,9 @@ export function ApiCalls(endpoint: string, body = {}) {
       method: "POST",
       headers: new Headers({
         "Content-Type": "application/json",
-        // Authorization: `Bearer ${cookie}`,
+        token: Cookies.get("token") || "",
       }),
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
       // signal: controller.signal,
     };
     try {
@@ -43,9 +44,9 @@ export function ApiCalls(endpoint: string, body = {}) {
       method: "PUT",
       headers: new Headers({
         "Content-Type": "application/json",
-        // Authorization: `Bearer ${cookie}`,
+        token: Cookies.get("token") || "",
       }),
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
       // signal: controller.signal,
     };
     try {
@@ -61,7 +62,7 @@ export function ApiCalls(endpoint: string, body = {}) {
       method: "DELETE",
       headers: new Headers({
         "Content-Type": "application/json",
-        // Authorization: `Bearer ${cookie}`,
+        token: Cookies.get("token") || "",
       }),
       // signal: controller.signal,
     };

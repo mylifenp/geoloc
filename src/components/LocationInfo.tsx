@@ -8,23 +8,23 @@ import {
   ChangeEvent,
 } from "react";
 import { observer } from "mobx-react-lite";
-import { LocationStore } from "../store/Location";
+import { LocationModel } from "../store/Location";
 import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 interface Props {
-  location: LocationStore;
+  location: LocationModel;
   onClose: MouseEventHandler<Element>;
 }
 
 const LocationInfo: FunctionComponent<Props> = observer(
   ({ location, onClose }) => {
-    const [editLocation, setEditLocation] = useState<LocationStore | null>(
+    const [editLocation, setEditLocation] = useState<LocationModel | null>(
       null
     );
-    const [cloneLocation, setCloneLocation] = useState<LocationStore | null>(
+    const [cloneLocation, setCloneLocation] = useState<LocationModel | null>(
       null
     );
 
@@ -91,9 +91,9 @@ const LocationInfo: FunctionComponent<Props> = observer(
                     <Grid item xs={12}>
                       <TextField
                         variant="outlined"
-                        value={cloneLocation.imageUrl}
+                        value={cloneLocation.imageurl}
                         onChange={(e) =>
-                          cloneLocation.setImageUrl(e.target.value)
+                          cloneLocation.setimageurl(e.target.value)
                         }
                       />
                     </Grid>

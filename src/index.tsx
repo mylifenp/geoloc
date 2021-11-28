@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider, rootStore } from "./store";
+import { SnackbarProvider } from "notistack";
 
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -15,7 +16,9 @@ function renderApp() {
   ReactDOM.render(
     <React.StrictMode>
       <Provider value={rootStore}>
-        <App />
+        <SnackbarProvider maxSnack={3}>
+          <App />
+        </SnackbarProvider>
       </Provider>
     </React.StrictMode>,
     document.getElementById("root")

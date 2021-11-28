@@ -3,7 +3,7 @@ import RootStore, { RootStoreModel } from "./RootStore";
 
 export const initialState = {
   uiState: {
-    version: "v2",
+    version: "v1",
   },
   locations: {},
 };
