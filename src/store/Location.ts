@@ -23,6 +23,12 @@ export const Location = types
     getCoordinates() {
       return [self.longitude, self.latitude];
     },
+    getName() {
+      return self.name;
+    },
+    getImage() {
+      return self.imageurl;
+    },
     toShow() {
       return {
         name: self.name,

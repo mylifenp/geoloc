@@ -43,6 +43,9 @@ export const RootStore = types
     selectLocation(location: LocationModel) {
       self.selectedLocation = location;
     },
+    clearSelectedLocation() {
+      self.selectedLocation = undefined;
+    },
   }))
   .actions((self) => ({
     fetchLocationsData: flow(function* fetchLocationsData() {
@@ -55,7 +58,8 @@ export const RootStore = types
       }
     }),
     addNewLocation: flow(function* addNewLocation(location) {
-      const endpoint = "location";
+      console.log("location", location);
+      const endpoint = "locations";
       const result = yield ApiCalls(endpoint, location).apiPost();
       if (typeof result === "object" && "error" in result && result.error) {
         return result;
@@ -64,7 +68,7 @@ export const RootStore = types
       }
     }),
     editLocation: flow(function* editLocation(location) {
-      const endpoint = `location/${location.id}`;
+      const endpoint = `locations/${location.id}`;
       const result = yield ApiCalls(endpoint, location).apiPut();
       if (typeof result === "object" && "error" in result && result.error) {
         return result;
@@ -75,7 +79,7 @@ export const RootStore = types
       }
     }),
     deleteLocation: flow(function* deleteLocation(location) {
-      const endpoint = `location/${location.id}`;
+      const endpoint = `locations/${location.id}`;
       const result = yield ApiCalls(endpoint).apiDelete();
       if (typeof result === "object" && "error" in result && result.error) {
         return result;

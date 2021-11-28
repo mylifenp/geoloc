@@ -1,7 +1,7 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent } from "react";
 import { observer } from "mobx-react-lite";
 import MapViewer from "../components/MapViewer";
-import { Box, Grid } from "@mui/material";
+import { Box } from "@mui/material";
 import Sidebar from "./Sidebar";
 import { useStore } from "../store";
 
@@ -11,18 +11,32 @@ const Dashboard: FunctionComponent<Props> = observer(() => {
   const store = useStore();
   const { uiState } = store;
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
-        <Grid item xs={9}>
-          <Box sx={uiState.getLogged() ? {} : { opacity: 0.4 }}>
-            <MapViewer />
-          </Box>
-        </Grid>
-        <Grid item xs={3}>
-          <Sidebar />
-        </Grid>
-      </Grid>
-    </Box>
+    <>
+      <Box
+        sx={
+          !uiState.getLogged()
+            ? {
+                opacity: "0.4",
+              }
+            : {}
+        }
+      >
+        <MapViewer />
+      </Box>
+      <Box
+        sx={{
+          bgcolor: "background.paper",
+          color: "text.primary",
+          p: 2,
+          position: "absolute",
+          top: 0,
+          left: "70%",
+          zIndex: "modal",
+        }}
+      >
+        <Sidebar />
+      </Box>
+    </>
   );
 });
 

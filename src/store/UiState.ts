@@ -9,6 +9,8 @@ export const UiState = types
     version: types.string,
     email: types.maybe(types.string),
     logged: false,
+    latitude: types.maybe(types.number),
+    longitude: types.maybe(types.number),
   })
   .views((self) => ({
     getLogged() {
@@ -17,8 +19,18 @@ export const UiState = types
     getVersion() {
       return self.version;
     },
+    getLatitude() {
+      return self.latitude;
+    },
+    getLongitude() {
+      return self.longitude;
+    },
   }))
   .actions((self) => ({
+    setCoordinates(value: [number, number]) {
+      self.latitude = value[1];
+      self.longitude = value[0];
+    },
     setLogged() {
       self.logged = true;
     },
